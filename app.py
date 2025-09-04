@@ -5,7 +5,7 @@ import numpy as np
 from huggingface_hub import hf_hub_download
 import tensorflow as tf
 import time
-from transformers import AutoTokenizer, TFBertModel
+from transformers import AutoTokenizer
 import re
 from transformers import TFAutoModelForSequenceClassification
 import emoji
@@ -425,3 +425,4 @@ elif tab == 'Text Classification':
             st.markdown(f"**Confidence:** <span style='color:limegreen;'>{confidence:.2f}%</span>", unsafe_allow_html=True)
         else:
             st.warning("Mohon masukkan teks terlebih dahulu.")
+
