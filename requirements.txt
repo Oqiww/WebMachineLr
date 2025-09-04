@@ -8,5 +8,6 @@ streamlit-on-Hover-tabs==1.0.1
 tensorflow==2.20.0
 tf_keras==2.19.0
 tokenizers==0.22.0
-transformers==4.56.0
+transformers==4.2.2
+
 
