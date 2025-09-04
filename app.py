@@ -360,8 +360,13 @@ elif tab == 'Text Classification':
     }
     tokenizer = AutoTokenizer.from_pretrained("indobenchmark/indobert-base-p1")
 
-    model2 = TFAutoModelForSequenceClassification.from_pretrained("Ndul/indobertv1")
-
+    try:
+        model2 = TFAutoModelForSequenceClassification.from_pretrained("Ndul/indobertv1")
+    except Exception as e:
+        print("from_pretrained gagal, load manual tf_model.h5:", e)
+        tf_model_path = hf_hub_download(repo_id="Ndul/indobertv1", filename="tf_model.h5")
+        model2 = tf.keras.models.load_model(tf_model_path, compile=False)
+    
     slang_dict = {
         'slth': 'setelah', 'dlm': 'dalam', 'yg': 'yang', 'dg': 'dengan', 
         'hnya': 'hanya', 'jgn': 'jangan', 'skrg': 'sekarang', 'utk': 'untuk', 'presiden': 'prabowo',
@@ -425,4 +430,3 @@ elif tab == 'Text Classification':
             st.markdown(f"**Confidence:** <span style='color:limegreen;'>{confidence:.2f}%</span>", unsafe_allow_html=True)
         else:
             st.warning("Mohon masukkan teks terlebih dahulu.")
-
