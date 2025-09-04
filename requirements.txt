@@ -9,7 +9,7 @@ tensorflow
 tf_keras
 tokenizers
 transformers
-transformers[tf]==4.36.2
+
 
 
 
