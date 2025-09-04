@@ -12,6 +12,8 @@ import emoji
 from keras.layers import InputLayer
 from keras.utils import custom_object_scope
 import keras
+from transformers import TFBertForSequenceClassification
+
 
 
 
@@ -361,7 +363,7 @@ elif tab == 'Text Classification':
     tokenizer = AutoTokenizer.from_pretrained("indobenchmark/indobert-base-p1")
 
     try:
-        model2 = TFAutoModelForSequenceClassification.from_pretrained("Ndul/indobertv1")
+        model2 = TFBertForSequenceClassification.from_pretrained("Ndul/indobertv1")  
     except Exception as e:
         print("from_pretrained gagal, load manual tf_model.h5:", e)
         tf_model_path = hf_hub_download(repo_id="Ndul/indobertv1", filename="tf_model.h5")
