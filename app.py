@@ -20,7 +20,6 @@ from transformers import TFBertModel
 
 st.set_page_config(page_title="Demo Hover Tabs", layout="wide")
 
-# --- CSS ringkas untuk sidebar hover ---
 st.markdown("""
     <style>
     /* Jangan ganggu main page */
@@ -83,7 +82,6 @@ with st.sidebar:
 )
 
 
-# --------- Konten per tab ---------
 if tab == 'Home':
     st.title("🏠 Home")
     st.write("Selamat datang! Arahkan kursor ke tab di sidebar untuk berpindah halaman.")
@@ -434,3 +432,4 @@ elif tab == 'Text Classification':
             st.markdown(f"**Confidence:** <span style='color:limegreen;'>{confidence:.2f}%</span>", unsafe_allow_html=True)
         else:
             st.warning("Mohon masukkan teks terlebih dahulu.")
+
