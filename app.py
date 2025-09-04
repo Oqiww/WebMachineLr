@@ -12,7 +12,7 @@ import emoji
 from keras.layers import InputLayer
 from keras.utils import custom_object_scope
 import keras
-from transformers import TFBertModel
+from transformers.models.bert import TFBertModel
 
 
 
@@ -432,4 +432,5 @@ elif tab == 'Text Classification':
             st.markdown(f"**Confidence:** <span style='color:limegreen;'>{confidence:.2f}%</span>", unsafe_allow_html=True)
         else:
             st.warning("Mohon masukkan teks terlebih dahulu.")
+
 
