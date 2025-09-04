@@ -12,6 +12,8 @@ import emoji
 from keras.layers import InputLayer
 from keras.utils import custom_object_scope
 import keras
+from transformers import TFBertModel
+
 
 
 
@@ -364,9 +366,10 @@ elif tab == 'Text Classification':
     try:
         model2 = TFAutoModelForSequenceClassification.from_pretrained("Ndul/indobertv1")
     except Exception as e:
-        print("from_pretrained gagal, load manual tf_model.h5:", e)
+        st.write("from_pretrained gagal, load manual tf_model.h5:", e)
         tf_model_path = hf_hub_download(repo_id="Ndul/indobertv1", filename="tf_model.h5")
-        model2 = tf.keras.models.load_model(tf_model_path, compile=False)
+        with custom_object_scope({'TFBertModel': TFBertModel}):
+            model2 = tf.keras.models.load_model(tf_model_path, compile=False)
     
     slang_dict = {
         'slth': 'setelah', 'dlm': 'dalam', 'yg': 'yang', 'dg': 'dengan', 
