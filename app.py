@@ -362,7 +362,7 @@ elif tab == 'Text Classification':
     tokenizer = AutoTokenizer.from_pretrained("indobenchmark/indobert-base-p1")
 
     try:
-        model2 = TFAutoModelForSequenceClassification.from_pretrained("Ndul/indobertv1", from_pt=True)
+        model2 = TFAutoModelForSequenceClassification.from_pretrained("Ndul/indobertv1")
     except Exception as e:
         st.write("from_pretrained gagal, load manual tf_model.h5:", e)
         tf_model_path = hf_hub_download(repo_id="Ndul/indobertv1", filename="tf_model.h5")
@@ -436,6 +436,7 @@ elif tab == 'Text Classification':
             st.markdown(f"**Confidence:** <span style='color:limegreen;'>{confidence:.2f}%</span>", unsafe_allow_html=True)
         else:
             st.warning("Mohon masukkan teks terlebih dahulu.")
+
 
 
 
