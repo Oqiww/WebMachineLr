@@ -12,7 +12,7 @@ import emoji
 from keras.layers import InputLayer 
 from keras.utils import custom_object_scope
 import keras
-from transformers import TFBertModel
+from transformers import TFBertModel, TFBertMainLayer
 
 
 
@@ -366,7 +366,11 @@ elif tab == 'Text Classification':
     except Exception as e:
         st.write("from_pretrained gagal, load manual tf_model.h5:", e)
         tf_model_path = hf_hub_download(repo_id="Ndul/indobertv1", filename="tf_model.h5")
-        with custom_object_scope({'TFBertModel': TFBertModel}):
+
+        with custom_object_scope({
+            "TFBertModel": TFBertModel,
+            "TFBertMainLayer": TFBertMainLayer
+        }):
             model2 = tf.keras.models.load_model(tf_model_path, compile=False)
     
     slang_dict = {
@@ -432,6 +436,7 @@ elif tab == 'Text Classification':
             st.markdown(f"**Confidence:** <span style='color:limegreen;'>{confidence:.2f}%</span>", unsafe_allow_html=True)
         else:
             st.warning("Mohon masukkan teks terlebih dahulu.")
+
 
 
 
